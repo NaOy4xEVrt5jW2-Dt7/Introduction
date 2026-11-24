@@ -2,161 +2,240 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>UNIVERSITY_PROJECTS // ARCHIVE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University Projects — Archive</title>
   <style>
-    /* Global Dark Y2K Background & Grid */
+    /* Minimalist Editorial Slide Color Scheme & Typography */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      background-color: #09090d;
-      background-image: 
-        linear-gradient(rgba(0, 255, 170, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 170, 0.06) 1px, transparent 1px);
-      background-size: 25px 25px;
-      color: #e2e8f0;
-      font-family: 'Courier New', Courier, monospace;
-      max-width: 750px;
-      margin: 40px auto;
-      padding: 20px;
+      background-color: #f4f3ef; /* Warm off-white paper background */
+      color: #111111;            /* Deep charcoal ink */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    /* Scrolling Retro Marquee */
-    .marquee-box {
-      background: #13131c;
-      border: 1px solid #ff007f;
-      color: #ff007f;
-      padding: 6px;
-      font-size: 13px;
+    .container {
+      max-width: 1120px;
+      width: 100%;
+      margin: auto;
+      padding: 70px 40px 30px;
+    }
+
+    /* Two-column slide layout: Title on left, Rounded cards on right */
+    .slide-layout {
+      display: grid;
+      grid-template-columns: 1fr 2.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* Left Header Section */
+    .left-column {
+      padding-top: 8px;
+    }
+
+    .top-line {
+      width: 32px;
+      height: 4px;
+      background-color: #111111;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 3.1rem;
       font-weight: bold;
-      margin-bottom: 25px;
-      box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+      line-height: 1.15;
+      margin: 0 0 20px 0;
+      color: #111111;
     }
 
-    /* Classic Y2K Window Container */
-    .window {
-      background-color: #111118;
-      border: 2px solid #00ffaa;
-      box-shadow: 6px 6px 0px #ff007f;
-      margin-bottom: 30px;
+    .intro-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #555555;
+      margin: 0;
     }
 
-    /* Window Top Title Bar */
-    .title-bar {
-      background: linear-gradient(90deg, #00ffaa, #0088ff);
-      color: #09090d;
-      font-weight: bold;
-      padding: 6px 12px;
+    /* Right Grid of Rounded Cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      aspect-ratio: 1 / 1.08;
+      padding: 24px 20px;
+      border: 1.5px solid #222222;
+      border-radius: 28px;
+      background-color: transparent;
+      color: #111111;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .card:hover {
+      background-color: #111111;
+      color: #f4f3ef;
+      transform: translateY(-4px);
+    }
+
+    .card-course {
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #666666;
+      margin-bottom: 10px;
+      transition: color 0.25s ease;
+    }
+
+    .card:hover .card-course {
+      color: #bbbbbb;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .card-action {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      opacity: 0.75;
+    }
+
+    /* Subtle Slide Footer */
+    footer {
+      max-width: 1120px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 40px 30px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      font-size: 14px;
-    }
-
-    .window-controls {
-      letter-spacing: 3px;
-    }
-
-    .window-body {
-      padding: 20px;
-    }
-
-    /* Glowing Headings */
-    h1 {
-      color: #00ffaa;
-      text-shadow: 0 0 8px rgba(0, 255, 170, 0.6);
-      font-size: 26px;
-      margin-top: 0;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
+      color: #777777;
     }
 
-    h2 {
-      color: #ff007f;
-      font-size: 18px;
-      border-bottom: 1px dashed #333;
-      padding-bottom: 5px;
+    /* Mobile & Tablet Responsiveness */
+    @media (max-width: 900px) {
+      .slide-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .card {
+        aspect-ratio: auto;
+        min-height: 170px;
+      }
     }
 
-    .status-badge {
-      display: inline-block;
-      background: #1f1f2e;
-      border: 1px solid #00ffaa;
-      color: #00ffaa;
-      padding: 3px 8px;
-      font-size: 12px;
-      margin-bottom: 15px;
-    }
-
-    /* Retro 3D Pixel Button */
-    a.y2k-btn {
-      display: inline-block;
-      background-color: #ff007f;
-      color: #ffffff;
-      font-weight: bold;
-      text-decoration: none;
-      padding: 10px 18px;
-      border-top: 2px solid #ff77ba;
-      border-left: 2px solid #ff77ba;
-      border-right: 2px solid #800040;
-      border-bottom: 2px solid #800040;
-      margin-top: 10px;
-      transition: 0.1s;
-    }
-
-    a.y2k-btn:hover {
-      background-color: #00ffaa;
-      color: #09090d;
-      border-top: 2px solid #99ffdd;
-      border-left: 2px solid #99ffdd;
-      border-right: 2px solid #00774d;
-      border-bottom: 2px solid #00774d;
-      box-shadow: 0 0 12px rgba(0, 255, 170, 0.8);
-    }
-
-    footer {
-      text-align: center;
-      font-size: 12px;
-      color: #666;
-      margin-top: 40px;
+    @media (max-width: 550px) {
+      .container {
+        padding: 40px 24px 20px;
+      }
+      h1 {
+        font-size: 2.4rem;
+      }
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        min-height: 140px;
+      }
+      footer {
+        padding: 30px 24px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Scrolling Status Ticker -->
-  <div class="marquee-box">
-    <marquee scrollamount="5">★ WELCOME TO MY UNIVERSITY ARCHIVE ★ STATUS: ONLINE ★ ALL SCHOOL REQUIREMENTS & SUBMISSIONS LOGGED BELOW ★</marquee>
-  </div>
+  <div class="container">
+    <div class="slide-layout">
 
-  <!-- Main Header Window -->
-  <div class="window">
-    <div class="title-bar">
-      <span>C:\SYSTEM\PORTFOLIO.EXE</span>
-      <span class="window-controls">[_][□][X]</span>
-    </div>
-    <div class="window-body">
-      <div class="status-badge">● SYSTEM READY // 2026</div>
-      <h1>University Projects</h1>
-      <p>> Initializing log of all university projects and coursework for school requirements.</p>
-    </div>
-  </div>
+      <!-- Left Column: Title & Coursework Summary -->
+      <div class="left-column">
+        <div class="top-line"></div>
+        <h1>University<br>Projects</h1>
+        <p class="intro-text">
+          Archive of semester assignments, lecturer handouts, and coursework submissions for 2026.
+        </p>
+      </div>
 
-  <!-- Assignment Window -->
-  <div class="window">
-    <div class="title-bar">
-      <span>FILE_01 // ASSIGNMENT_SUBMISSION.PDF</span>
-      <span class="window-controls">[_][□][X]</span>
-    </div>
-    <div class="window-body">
-      <h2>[01] Semester Assignment</h2>
-      <p><strong>Course:</strong> Enter Subject Code / Name<br>
-      <strong>Format:</strong> Portable Document Format (.PDF)</p>
-      <p>Click the button below to view or download the assignment document directly.</p>
-      
-      <!-- REPLACE 'your-file.pdf' WITH YOUR EXACT PDF FILENAME -->
-      <a href="your-file.pdf" target="_blank" class="y2k-btn">► OPEN_FILE.PDF</a>
+      <!-- Right Column: 3x2 Grid of Clickable PDF Cards -->
+      <div class="cards-grid">
+
+        <!-- CARD 1: Replace 'your-file.pdf' with your exact PDF filename -->
+        <a href="your-file.pdf" target="_blank" class="card">
+          <span class="card-course">Subject Code</span>
+          <span class="card-title">Semester<br>Assignment 01</span>
+          <span class="card-action">Open PDF ↗</span>
+        </a>
+
+        <!-- CARD 2 -->
+        <a href="file-02.pdf" target="_blank" class="card">
+          <span class="card-course">Subject Code</span>
+          <span class="card-title">Lecturer<br>Notes &amp; Slides</span>
+          <span class="card-action">Open PDF ↗</span>
+        </a>
+
+        <!-- CARD 3 -->
+        <a href="file-03.pdf" target="_blank" class="card">
+          <span class="card-course">Subject Code</span>
+          <span class="card-title">Lab Report &amp;<br>Documentation</span>
+          <span class="card-action">Open PDF ↗</span>
+        </a>
+
+        <!-- CARD 4 -->
+        <a href="file-04.pdf" target="_blank" class="card">
+          <span class="card-course">Subject Code</span>
+          <span class="card-title">Case Study<br>Analysis</span>
+          <span class="card-action">Open PDF ↗</span>
+        </a>
+
+        <!-- CARD 5 -->
+        <a href="file-05.pdf" target="_blank" class="card">
+          <span class="card-course">Subject Code</span>
+          <span class="card-title">Group Project<br>Submission</span>
+          <span class="card-action">Open PDF ↗</span>
+        </a>
+
+        <!-- CARD 6 -->
+        <a href="#" class="card">
+          <span class="card-course">Archive</span>
+          <span class="card-title">More</span>
+          <span class="card-action">Coming Soon</span>
+        </a>
+
+      </div>
+
     </div>
   </div>
 
   <footer>
-    [ HOSTED ON GITHUB PAGES // DESIGNED IN HTML & CSS ]
+    <span>UNIVERSITY PORTFOLIO // 2026</span>
+    <span>01</span>
   </footer>
 
 </body>
